@@ -1,0 +1,583 @@
+WindowsManager:
+    RegWindow:
+    SignWindow:
+    SignUWindow:
+    MainWindow:
+    Spage:
+    Wpage:
+    Lbpage:
+    WinPage:
+    LosePage:
+
+<RegWindow>:
+    name:"reg"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Image:
+                source:'imgs/sa.jpg'
+                pos: 0,150
+                size_hint: 1,1
+
+            Button:
+                text:'Sign In'
+                font_size:24
+                pos: 125,180
+                size_hint: .4,.15
+                background_normal : 'imgs/ob1.png'
+                background_down : 'imgs/normal.png'
+                color:(0,0,0,1)
+                on_release:
+                    root.manager.get_screen("sign").ids.na.text = ''
+                    root.manager.get_screen("sign").ids.passw.text = ''
+                    app.root.current='sign' #if passw.text == 'python' else 'Main'
+                    #passw.text = ''
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                text:'Sign Up'
+                font_size:24
+                pos: 125,80
+                size_hint: .4,.15
+                background_normal : 'imgs/ob1.png'
+                background_down : 'imgs/normal.png'
+                color:(0,0,0,1)
+                on_release:
+                    root.manager.get_screen("signU").ids.na1.text = ''
+                    root.manager.get_screen("signU").ids.passw1.text = ''
+                    root.manager.get_screen("signU").ids.passw12.text = ''
+                    app.root.current='signU' #if passw.text == 'python' else 'Main'
+                    #passw.text = ''
+                    root.manager.transition.direction = 'left'
+<SignUWindow>:
+    name:"signU"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Image:
+                source:'imgs/su.png'
+                pos: 20,150
+                size_hint: .9,.9
+
+            TextInput:
+                id:na1
+                text:''
+                hint_text:'Enter Your Name..'
+                font_size:18
+                multiline:False
+                size_hint:(.7,.05)
+                pos: 65,240
+            
+            TextInput:
+                id:passw1
+                password: True
+                text:''
+                hint_text:'Enter Account Password..'
+                font_size:18
+                multiline:False
+                size_hint:(.7,.05)
+                pos: 65,200
+            
+            TextInput:
+                id:passw12
+                password: True
+                text:''
+                hint_text:'Enter Account Password Again..'
+                font_size:18
+                multiline:False
+                size_hint:(.7,.05)
+                pos: 65,160
+
+            Label:
+                text:root.err_msg
+                font_size:18
+                size_hint:(.7,.05)
+                pos: 65,280
+                color:(0,0,0,1)
+
+            Button:
+                text:'Create Account'
+                font_size:18
+                pos: 100,80
+                size_hint: .50,.1
+                background_normal : 'imgs/d.png'
+                background_down : 'imgs/down2.png'
+                on_release:
+                    root.addU(na1.text,passw1.text,passw12.text)
+
+            
+            Button:
+                pos: 30,540
+                size_hint: .2,.13
+                # color:(0.5,0.5,.9,1)
+                background_normal : 'imgs/bba.png'
+                background_down : 'imgs/bba.png'
+                # background_color:(1,1,1,0)
+                on_release:
+                    app.root.current='reg' #if passw.text == 'python' else 'Main'
+                    #passw.text = ''
+                    root.manager.transition.direction = 'right'
+        
+<SignWindow>:
+    name:"sign"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Image:
+                source:'imgs/lg.png'
+                pos: 20,150
+                size_hint: .9,.9
+
+            TextInput:
+                id:na
+                text:''
+                hint_text:'Enter Your Name..'
+                font_size:18
+                multiline:False
+                size_hint:(.7,.05)
+                pos: 65,230
+
+            
+            TextInput:
+                id:passw
+                password: True
+                text:''
+                hint_text:'Enter Your Password..'
+                font_size:18
+                multiline:False
+                size_hint:(.7,.05)
+                pos: 65,190
+                
+
+            Button:
+                text:'Login'
+                font_size:18
+                pos: 160,110
+                size_hint: .20,.1
+                background_normal : 'imgs/normal.png'
+                background_down : 'imgs/down2.png'
+                on_release:
+                    root.sCheck(na.text,passw.text)
+                    root.manager.transition.direction = 'left'
+
+            Label:
+                text:root.err_msg1
+                font_size:18
+                size_hint:(.7,.05)
+                pos: 65,270
+                color:(0,0,0,1)
+            
+            Button:
+                pos: 30,540
+                size_hint: .2,.13
+                # color:(0.5,0.5,.9,1)
+                background_normal : 'imgs/bba.png'
+                background_down : 'imgs/bba.png'
+                on_release:
+                    app.root.current='reg' #if passw.text == 'python' else 'Main'
+                    #passw.text = ''
+                    root.manager.transition.direction = 'right'
+        
+<MainWindow>:
+    name: "main"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Image:
+                source: 'imgs/en.png'
+                pos: 20,150
+                size_hint: .9,.9
+            Button:
+                text: 'Speech Test'
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+                pos: 240 , 200
+                size_hint: .3,.1
+                border : (30, 30, 30, 30)
+                background_normal : 'imgs/d.png'
+                background_down : 'imgs/down2.png'
+                on_release:
+                    app.root.current = 'sp'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                text: 'Writing Test'
+                pos: 50 , 200
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+                size_hint: .3,.1
+                border : (30, 30, 30, 30)
+                background_normal : 'imgs/d.png'
+                background_down : 'imgs/down2.png'
+                on_release:
+                    app.root.current = 'word'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                text: 'Leadboard'
+                pos: 150 , 120
+                size_hint: .28,.1
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+                background_color :1, 1, 1, 1
+                border : (30, 30, 30, 30)
+                background_normal : 'imgs/d.png'
+                background_down : 'imgs/down2.png'
+                on_release:
+                    root.manager.get_screen("lb").ref()
+                    app.root.current = 'lb'
+                    root.manager.transition.direction = 'left'
+
+            
+            Button:
+                pos: 30,560
+                size_hint: .15,.07
+                text:'Log Out'
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+                color:(1,0,0,1)
+                background_color:0,0,0,0
+                on_release:
+                    root.manager.get_screen("sign").ids.na.text = ''
+                    root.manager.get_screen("sign").ids.passw.text = ''
+                    root.manager.get_screen("signU").ids.na1.text = ''
+                    root.manager.get_screen("signU").ids.passw1.text = ''
+                    root.manager.get_screen("signU").ids.passw12.text = ''
+                    app.root.current='reg' 
+                    root.manager.transition.direction = 'right'
+
+            Label:
+                text:'Ready to learn English??'
+                pos: 150 , 20
+                size_hint: .25,.1
+                font_size:22
+                color:(.3,60/255.0,.3,31)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+<Lbpage>:
+    name:"lb"
+    FloatLayout:
+        Image:
+            source:'imgs/nn.png'
+
+        Image:
+            source:'imgs/lead.png'
+            pos:100,450
+            size_hint: .5,.3
+
+        Label:
+            text:'Name             Score'
+            pos:160,420
+            color:(1,0,1,1)
+            size_hint: .25,.1
+            font_size:22
+            font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+        Label:
+            text:root.val0 +'                        '+str(root.sval0)
+            pos:140,370
+            color:(0,0,0,1)
+            size_hint: .25,.1
+            font_size:16
+            font_name:'fonts/KGBlankSpaceSketch.ttf'
+        
+        Label:
+            text:root.val1 +'                        '+str(root.sval1)
+            pos:140,320
+            color:(0,0,0,1)
+            size_hint: .25,.1
+            font_size:16
+            font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+        Label:
+            text:root.val2 +'                        '+str(root.sval2)
+            pos:140,270
+            color:(0,0,0,1)
+            size_hint: .25,.1
+            font_size:16
+            font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+        Label:
+            text:root.val3 +'                        '+str(root.sval3)
+            pos:140,220
+            color:(0,0,0,1)
+            size_hint: .25,.1
+            font_size:16
+            font_name:'fonts/KGBlankSpaceSketch.ttf'
+        
+        Label:
+            text:root.val4 +'                        '+str(root.sval4)
+            pos:150,170
+            color:(0,0,0,1)
+            size_hint: .25,.1
+            font_size:16
+            font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+        
+        Button:
+            pos: 20,540
+            size_hint: .2,.13
+            background_normal : 'imgs/bba.png'
+            background_down : 'imgs/bba.png'
+            on_release:
+                app.root.current='main' #if passw.text == 'python' else 'Main'
+                #passw.text = ''
+                root.manager.transition.direction = 'right'
+<Wpage>:
+    name:"word"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Label:
+                text:"What is in the picture?"
+                pos: 150 , 480
+                size_hint: .25,.1
+                font_size:22
+                color:(.3,60/255.0,.3,31)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+            
+
+            Image:
+                source:"testImgs/"+root.im
+                size_hint:.4,.4
+                pos:110,240
+            
+            
+            
+            Button:
+                pos: 130,60
+                size_hint: .27,.17
+                background_normal : 'imgs/sp1.png'
+                background_down : 'imgs/sp.png'
+                on_release:
+                    root.plso()
+            
+            
+            
+            Label:
+                text:'Score'
+                pos: 280 , 550
+                size_hint: .25,.1
+                font_size:18
+                color:(1,69/255.0,0,1)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+            Label:
+                text:"{}".format(root.sx)
+                pos: 280 , 520
+                size_hint: .25,.1
+                font_size:16
+                color:(1,69/255.0,0,1)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+
+            TextInput:
+                id:res
+                pos:110,200
+                size_hint:.4,.05
+                on_touch_down: if self.collide_point(*args[1].pos): self.text = ""
+                
+            Button:
+                text:root.butN
+                font_size:20
+                pos:110,150
+                background_normal:'imgs/pp.png'
+                background_down:'imgs/gp.png'
+                halign:'center'
+                size_hint:.4,.05
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+                on_release:
+                    root.reco(res.text)
+                    print(root.im)
+                    if root.err_n == 3 :\
+                    app.root.current='lose';\
+                    root.addScore(root.manager.get_screen("sign").ids.na.text,root.sx)
+                    if root.sx == 6 :\
+                    app.root.current='win';\
+                    root.addScore(root.manager.get_screen("sign").ids.na.text,6)
+                    
+            
+            Button:
+                pos: 20,540
+                size_hint: .2,.13
+                background_normal : 'imgs/bba.png'
+                background_down : 'imgs/bba.png'
+                on_press:
+                    root.manager.get_screen("word").err_n = 0
+                    root.manager.get_screen("word").sx = 0
+                    root.manager.get_screen("word").result = 'white'
+                    root.manager.get_screen("word").olist = root.manager.get_screen("word").sor
+                    root.manager.get_screen("word").butN = 'ANSWER'
+                    root.manager.get_screen("word").im = root.manager.get_screen("word").olist[0]
+                    root.manager.get_screen("word").ids.res.text = ''
+                    app.root.current='main' #if passw.text == 'python' else 'Main'
+                    #passw.text = ''
+                    root.manager.transition.direction = 'right'
+            Image:
+                source:'imgs/'+root.result+'.png'
+                size_hint:.2,.2
+                pos:160,510
+<Spage>:
+    name:"sp"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Label:
+                text:"What is in the picture?"
+                pos: 150 , 480
+                size_hint: .25,.1
+                font_size:22
+                color:(.3,60/255.0,.3,31)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+            Image:
+                source:"testImgs/"+root.im
+                size_hint:.4,.4
+                pos:110,240
+            
+            Button:
+                pos:195,110
+                background_normal:'imgs/rec.jpg'
+                background_down:'imgs/rec1.jpg'
+                size_hint:.32,.2
+                on_release:
+                    if root.err_n == 2 :\
+                    app.root.current='lose';\
+                    root.addScore(root.manager.get_screen("sign").ids.na.text,root.sx)
+                    if root.sx == 6 :\
+                    app.root.current='win';\
+                    root.addScore(root.manager.get_screen("sign").ids.na.text,6)
+                    else:\
+                    root.spd()
+            
+            Button:
+                pos: 40,100
+                size_hint: .4,.25
+                background_normal : 'imgs/sp1.png'
+                background_down : 'imgs/sp.png'
+                on_release:
+                    root.plso()
+            
+            Label:
+                text:'Score'
+                pos: 150 , 550
+                size_hint: .25,.1
+                font_size:18
+                color:(1,69/255.0,0,1)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+            
+            
+            Label:
+                text:"{}".format(root.sx)
+                pos: 150 , 520
+                size_hint: .25,.1
+                font_size:16
+                color:(1,69/255.0,0,1)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+            
+            
+            Button:
+                pos: 20,540
+                size_hint: .2,.13
+                background_normal : 'imgs/bba.png'
+                background_down : 'imgs/bba.png'
+                on_release:
+                    root.manager.get_screen("sp").err_n = 0
+                    root.manager.get_screen("sp").sx = 0
+                    root.manager.get_screen("sp").result = 'white'
+                    root.manager.get_screen("sp").olist = root.manager.get_screen("sp").sor
+                    
+                    app.root.current='main' #if passw.text == 'python' else 'Main'
+                    #passw.text = ''
+                    root.manager.transition.direction = 'right'
+            Image:
+                source:'imgs/'+root.result+'.png'
+                size_hint:.2,.2
+                pos:150,30
+
+<WinPage>:
+    name:"win"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Label:
+                text:"You Win"
+                pos: 150 , 480
+                size_hint: .25,.1
+                font_size:32
+                color:(34/255.0,139/255.0,34/255.0,1)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+            Image:
+                source:"imgs/win.png"
+                size_hint:.5,.5
+                pos:100,200
+
+            Image:
+                source:"imgs/fir.png"
+                size_hint:.7,.7
+                pos:60,-60
+                
+            Button:
+                pos: 20,540
+                size_hint: .2,.13
+                background_normal : 'imgs/bba.png'
+                background_down : 'imgs/bba.png'
+                on_press:
+                    root.manager.get_screen("word").err_n = 0
+                    root.manager.get_screen("word").sx = 0
+                    root.manager.get_screen("word").result = 'white'
+                    root.manager.get_screen("word").olist = root.manager.get_screen("word").sor
+                    root.manager.get_screen("word").butN = 'ANSWER'
+                    root.manager.get_screen("word").im = root.manager.get_screen("word").olist[0]
+                    root.manager.get_screen("word").ids.res.text = ''
+                    root.manager.get_screen("sp").err_n = 0
+                    root.manager.get_screen("sp").sx = 0
+                    root.manager.get_screen("sp").result = 'white'
+                    root.manager.get_screen("sp").olist = root.manager.get_screen("sp").sor
+                    app.root.current='main' #if passw.text == 'python' else 'Main'
+                        #passw.text = ''
+                    root.manager.transition.direction = 'right'
+<LosePage>:
+    name:"lose"
+    GridLayout:
+        cols:1
+        FloatLayout:
+            Label:
+                text:"You Lost"
+                pos: 160 , 480
+                size_hint: .25,.1
+                font_size:38
+                color:(1,0,0,1)
+                font_name:'fonts/KGBlankSpaceSketch.ttf'
+
+            Image:
+                source:"imgs/lost.png"
+                size_hint:.6,.6
+                pos:85,150
+
+            Image:
+                source:"imgs/ta.png"
+                size_hint:.8,.8
+                pos:30,-120
+                
+            Button:
+                pos: 20,540
+                size_hint: .2,.13
+                background_normal : 'imgs/bba.png'
+                background_down : 'imgs/bba.png'
+                on_press:
+                    root.manager.get_screen("word").err_n = 0
+                    root.manager.get_screen("word").sx = 0
+                    root.manager.get_screen("word").result = 'white'
+                    root.manager.get_screen("word").olist = root.manager.get_screen("word").sor
+                    root.manager.get_screen("word").butN = 'ANSWER'
+                    root.manager.get_screen("word").im = root.manager.get_screen("word").olist[0]
+                    root.manager.get_screen("word").ids.res.text = ''
+                    root.manager.get_screen("sp").err_n = 0
+                    root.manager.get_screen("sp").sx = 0
+                    root.manager.get_screen("sp").result = 'white'
+                    root.manager.get_screen("sp").olist = root.manager.get_screen("sp").sor
+                    app.root.current='main' #if passw.text == 'python' else 'Main'
+                        #passw.text = ''
+                    root.manager.transition.direction = 'right'
+
+
+            
