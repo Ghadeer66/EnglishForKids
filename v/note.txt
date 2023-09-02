@@ -1,1 +1,1 @@
-download and compress file from this link
+download and compress file from this link https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
