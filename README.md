@@ -13,12 +13,11 @@ c- Main page with three options:<br>
    if wrong answer's value reaches 3, the user loses.
  - <b>Leadboard</b> page button : to enter scores page and show users names and scores.
 <h2>Requirements:</h2>
-1- python-telegram-bot version 20.3 to install it:
-pip install python-telegram-bot==20.3
-2- selenium library :
-pip install selenium
-3- Google Chrome browser version 114.0.5735.134 (stop the auto updating so that the Chrome version keep up with the Chromdriver version)
-4- ChromeDriver 114.0.5735.90 you can download it from:
-https://chromedriver.storage.googleapis.com/index.html?path=114.0.5735.90/
-5- Pandas and CSV libraries:
+1- Kivy library, to install it:
+pip install kivy
+2- Vosk library :
+pip install vosk
+3- Pygame library:
+pip install pygame
+4- Pandas and CSV libraries:
 pip install pandas
