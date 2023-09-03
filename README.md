@@ -13,11 +13,11 @@ c- Main page with three options:<br>
    if wrong answer's value reaches 3, the user loses.
  - <b>Leadboard</b> page button : to enter scores page and show users names and scores.
 <h2>Requirements:</h2>
-1- Kivy library, to install it:
-pip install kivy
-2- Vosk library :
-pip install vosk
-3- Pygame library:
-pip install pygame
-4- Pandas and CSV libraries:
+1- Kivy library, to install it:<br>
+pip install kivy<br>
+2- Vosk library :<br>
+pip install vosk<br>
+3- Pygame library:<br>
+pip install pygame<br>
+4- Pandas and CSV libraries:<br>
 pip install pandas
