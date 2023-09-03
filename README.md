@@ -22,6 +22,3 @@ pip install selenium
 https://chromedriver.storage.googleapis.com/index.html?path=114.0.5735.90/
 5- Pandas and CSV libraries:
 pip install pandas
-6- Telegram account and platform(App/Desktop/Web)
-7- Creating Telegram bot using botFather and save the bot token.
-8- A good network speed
